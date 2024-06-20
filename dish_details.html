@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ dish.name }} - ოდა</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">ოდა</div>
+        <div class="cart">
+            <div id="cart-count">{{ request.session.cart|length|default:0 }}</div>
+            <a href="{% url 'reset_cart' %}"><img src="{% static 'images/cart.png' %}" alt="Cart"></a>
+        </div>
+    </header>
+    <div class="container">
+        <!-- დინამიურად გამოტანილი ინფორმაცია კერძებზე -->
+        <div class="dish-details">
+            <h1>{{ dish.name }}</h1>
+            <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
+            <p>{{ dish.description }}</p>
+            <p>სიცხარის დონე: {{ dish.spicy_level }}</p>
+            <p>ნიგვზიანი: {{ dish.is_nutty|yesno:"კი,არა" }}</p>
+            <p>ვეგეტარიანული: {{ dish.is_vegetarian|yesno:"კი,არა" }}</p>
+            <p>ფასი: ${{ dish.price }}</p>
+            <a href="{% url 'dish_list' %}">მენიუ</a>
+        </div>
+    </div>
+</body>
+</html>

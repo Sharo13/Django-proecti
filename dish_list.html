@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ელენე შარია</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- ჰედერი -->
+    <header>
+        <div class="logo">ოდა</div>
+        <div class="cart">
+            <div id="cart-count">{{ request.session.cart_count|default:0 }}</div>
+            <a href="{% url 'reset_cart' %}"><img src="{% static 'images/cart.png' %}" alt="Cart"></a>
+        </div>
+    </header>
+    <div class="container">
+        <!-- ფილტრი -->
+        <div class="filter-section">
+            <form method="GET" id="filter-form">
+                <div class="filter-sidebar">
+                    <h2>ფილტრი</h2>
+                    <label for="category">კატეგორია:</label>
+                    <select name="category" id="category">
+                        <option value="">ყველა</option>
+                        {% for category in categories %}
+                            <option value="{{ category.name }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="nutty">ნიგვზიანი:</label>
+                    <input type="checkbox" name="nutty" id="nutty" value="yes">
+                    <label for="vegetarian">ვეგეტარიანული:</label>
+                    <input type="checkbox" name="vegetarian" id="vegetarian" value="yes">
+                    <label for="price_min">ფასი:</label>
+                    <input type="number" name="price_min" id="price_min" placeholder="Min" min="0" step="0.01">
+                    <input type="number" name="price_max" id="price_max" placeholder="Max" min="0" step="0.01">
+                    <label for="spicy_min">სიცხარე:</label>
+                    <input type="number" name="spicy_min" id="spicy_min" placeholder="Min" min="0" max="4">
+                    <input type="number" name="spicy_max" id="spicy_max" placeholder="Max" min="0" max="4">
+                    <button type="submit">გაფილტვრა</button>
+                </div>
+            </form>
+        </div>
+        <!-- კერძები -->
+        <div class="dish-list">
+            {% for dish in dishes %}
+                <div class="dish-card">
+                    <a href="{% url 'dish_details' dish.id %}", style="text-decoration: none;">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="dish-image">
+                        <h2>{{ dish.name }}</h2>
+                    </a>
+                        <p>სიცხარე: {{ dish.spicy_level }}</p>
+                        <p>ნიგვზიანი: {{ dish.is_nutty|yesno:"კი,არა" }}</p>
+                        <p>ვეგეტარიანული: {{ dish.is_vegetarian|yesno:"კი,არა" }}</p>
+                        <p>ფასი: ${{ dish.price }}</p>
+                    
+                    <form action="{% url 'add_to_cart' dish.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">კალათაში დამატება</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

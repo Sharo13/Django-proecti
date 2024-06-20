@@ -1,0 +1,206 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #D3D3D3;
+    margin: 0;
+    padding: 0;
+}
+
+/* ჰედერი */
+header {
+    background-color: #065A7A;
+    color: #fff;
+    padding: 1px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+header .logo {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+header .cart {
+    position: relative;
+}
+
+header .cart img {
+    width: 30px;
+    height: 30px;
+}
+
+header #cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-weight: bold;
+}
+
+/*ფილტრის სტილები */
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.filter-section {
+    width: 20%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 80%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 60px;
+    left: 0;
+}
+
+.filter-sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.filter-sidebar label {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.filter-sidebar select, .filter-sidebar input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.filter-sidebar button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #B5A642;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.filter-sidebar button:hover {
+    background-color: #065A7A;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+/* კერძები */
+.dish-list {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 20%;
+    box-sizing: border-box;
+}
+
+.dish-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 8px #7a250648;
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.dish-card:hover
+{
+    scale: 1.05;
+}
+
+.dish-image {
+    height: 170px;
+    width: auto;
+    border-radius: 5px;
+}
+
+.dish-card h2 {
+    color: #333;
+}
+
+.dish-card p {
+    color: #666;
+}
+.dish-card img{
+    width: 200px;
+    height: auto;
+   
+}
+.dish-card{
+    align-items: center;
+}
+
+.dish-card button {
+    padding: 10px 20px;
+    background-color: #B5A642;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.dish-card button:hover {
+    background-color: #065A7A;
+    font-weight: bold;
+
+}
+
+/* dish_details.html  */
+.dish-details {
+    text-align: center;
+    margin: 20px auto;
+    width: 80%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dish-details h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.dish-details img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.dish-details p {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.dish-details a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dish-details a:hover {
+    background-color: #065A7A;
+}
